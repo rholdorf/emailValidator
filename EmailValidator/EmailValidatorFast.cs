@@ -1,3 +1,5 @@
+using System.Buffers;
+
 namespace EmailValidator;
 
 public static class EmailValidatorFast
@@ -41,10 +43,8 @@ public static class EmailValidatorFast
         if (domain.IndexOf('.') == -1)
             return false; // tem que ter pelo menos um ponto depois da @
 
-        if (emailSpan.IndexOf("..") >= 0 || emailSpan.IndexOf("--") >= 0)
-            return false; // não pode ter dois pontos nem dois hífens        
-
-        return true;
+        // não pode ter dois pontos nem dois hífens
+        return emailSpan.IndexOf("..") == -1 && emailSpan.IndexOf("--") == -1; 
     }
     
     private static bool IsValidLocalPart(ReadOnlySpan<char> localPart)
