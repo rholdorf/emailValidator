@@ -22,6 +22,7 @@ public class UnitTest1
     [InlineData("bar@a123456789-a123456789-a123456789-a123456789-a123456789KK.com.br")]
     [InlineData("foo@foo.bar.qux.nox")]
     [InlineData("a123456789a123456789a123456789a123456789a123456789a123456789abcd@foo.bar.qux.nox")]
+    [InlineData("a123456789a123456789a123456789a123456789a123456789a123456789abcd@foo.012345678901234567890123456789012345678901234567bar.qux.nox")]
     [InlineData("todoscaracteresvalidos!#$%&'*+/=?^_`{|}@shubiduba.com")]    
     public void EmailIsWellFormed(string sut)
     {
@@ -42,6 +43,7 @@ public class UnitTest1
     [InlineData("#@%^%#$@#$@#.com")]
     [InlineData("alguns(invalidos)@shubiduba.com")]
     [InlineData("@example.com")]
+    [InlineData(" @example.com")]
     [InlineData("email@.com")]
     [InlineData("Joe Smith <email@example.com>")]
     [InlineData("email.example.com")]
@@ -56,6 +58,12 @@ public class UnitTest1
     [InlineData("email@111.222.333.44444")]
     [InlineData("email@example..com")]
     [InlineData("Abc..123@example.com")]
+    [InlineData("Abc..123@exa--mple.com")]
+    [InlineData("Abc--123@example.com")]
+    [InlineData("..Abc123@example.com")]
+    [InlineData("--Abc123@example.com")]
+    [InlineData("..Abc--123@example.com")]
+    [InlineData("--Abc..123@example.com")]    
     [InlineData("foo@aa")]
     [InlineData("foo@a123456789.a123456789.a123456789.a123456789.a123456789.a123456789")]
     [InlineData("foo@domain-")]
@@ -71,6 +79,9 @@ public class UnitTest1
     [InlineData("bar.@domain")]
     [InlineData("foobar@")]
     [InlineData("email@")]    
+    [InlineData("email@ ")]
+    [InlineData("email@.")]
+    [InlineData("email@-")]
     public void EmailIsInvalid(string sut)
     {
         // Arrange

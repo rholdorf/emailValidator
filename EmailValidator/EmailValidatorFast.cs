@@ -41,7 +41,7 @@ public static class EmailValidatorFast
         if (domain.IndexOf('.') == -1)
             return false; // tem que ter pelo menos um ponto depois da @
 
-        if (emailSpan.IndexOf("..") > -1 || emailSpan.IndexOf("--") > -1)
+        if (emailSpan.IndexOf("..") >= 0 || emailSpan.IndexOf("--") >= 0)
             return false; // não pode ter dois pontos nem dois hífens        
 
         return true;
@@ -57,7 +57,7 @@ public static class EmailValidatorFast
 
     private static bool IsValidDomain(ReadOnlySpan<char> domain)
     {
-        if (domain.IsEmpty || domain.Length < 3 || domain.Length > 63)
+        if (domain.IsEmpty || (domain.Length < 3 || domain.Length > 63))
             return false;
 
         return ValidName(domain);
