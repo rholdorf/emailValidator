@@ -13,12 +13,12 @@ public static class EmailValidatorFast
     /// <summary>
     /// Verifica se o valor representa um email bem formado, de acordo com a RFC. Precisa ter no mínimo 5 e no máximo
     /// 128 caracteres. Ter um sinal de arroba "@", que separa o "localPart" do "domain". LocalPart pode conter
-    /// caracteres ASCII de A-Z, a-z, 0-9 e os sinais -.!#$%&"*+=?^_'{/} e ter no máximo 64 caracteres. Domain pode
-    /// conter caracteres ASCII A-Z, a-z, 0-9, hífen ("-"), ponto ("."), ter no mínimo 3 e no máximo 63 caracteres.
-    /// Domain precisa conter ao menos um ponto (".com", ".net.br", etc). LocalPart e domain não podem começar nem
-    /// terminar com ponto ou hífen, também não podem conter dois pontos ou dois hífens juntos. Apesar da RFC dizer que
-    /// é possível ter várias outras variações, desde que estejam na localPart e entre aspas, tais variações não são
-    /// consideradas, por serem raríssimas. Adicionalmente, somente números não é considerado válido.  
+    /// caracteres ASCII de A-Z, a-z, 0-9 e os sinais &#45;.!#$%&quot;*+=?^_&#39;{/} e ter no máximo 64 caracteres.
+    /// Domain pode conter caracteres ASCII A-Z, a-z, 0-9, hífen ("-"), ponto ("."), ter no mínimo 3 e no máximo 63
+    /// caracteres. Domain precisa conter ao menos um ponto (".com", ".net.br", etc). LocalPart e domain não podem
+    /// começar nem terminar com ponto ou hífen, também não podem conter dois pontos ou dois hífens juntos. Apesar da
+    /// RFC dizer que é possível ter várias outras variações, desde que estejam na localPart e entre aspas, tais
+    /// variações não são consideradas, por serem raríssimas. Adicionalmente, somente números não é considerado válido.  
     /// </summary>
     /// <param name="email"></param>
     /// <returns></returns>
